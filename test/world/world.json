@@ -1,0 +1,31 @@
+{
+	"models" : [
+		"building1.obj",
+		"building2.obj",
+		"plane.obj"
+	],	
+
+	"textures" : [
+		"building.jpg", 
+		"ground.jpg"
+	],
+
+	"entities" : [
+		{ "name" : "b1", "model" : "building1.obj", "texture" : "building.jpg" },
+		{ "name" : "b2", "model" : "building2.obj", "texture" : "building.jpg" },
+		{ "name" : "ground", "model" : "plane.obj", "texture" : "ground.jpg" }
+	],
+
+	"world" : [
+		{ "name" : "ground", "scale" : [100,0,100], "translate" : [40,5,30] },
+		{ "name" : "b1",     "scale" : [10,10,10],  "translate" : [40,5,30] },
+		{ "name" : "b2",     "scale" : [10,10,10],  "translate" : [-25,5,70] }
+	],
+		
+	"camera" : {
+		"position" : [0,1.80,0],
+		"direction" : [0,0,0], 
+		"normal" : [0,0,-1], 
+		"up" : [0,1,0]
+	}
+}

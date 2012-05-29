@@ -1,0 +1,75 @@
+newmtl blinn4SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 0.17 0.17 0.17
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn11SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd MercedesBenzSLR_color.jpg
+bump MercedesBenzSLR_bump.jpg -bm 0.03
+Ni 1.00
+Ks 0.00 0.00 0.00
+newmtl blinn12SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd MercedesBenzSLR_color.jpg
+bump MercedesBenzSLR_bump.jpg -bm -0.05
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl dome_lambert7SG
+illum 4
+Kd 0.00 0.01 0.02
+Ka 0.00 0.01 0.02
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 0.00 0.00 0.00
+Ni 1.00
+newmtl phong1SG
+illum 4
+Kd 0.38 0.44 0.45
+Ka 0.00 0.00 0.00
+Tf 0.14 0.14 0.14
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 74.51
+newmtl phongE1SG
+illum 4
+Kd 0.95 0.16 0.16
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl roof_blinn1SG
+illum 4
+Kd 0.16 0.16 0.16
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
