@@ -4,11 +4,6 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width">
-
-<!--[if IE]>
-	<link rel="stylesheet" type="text/css" href="clippy.css" media="all">
-<![endif]-->
-
 </head>
 <body>
 <div><canvas width="640" height="480"></canvas></div> 
@@ -16,7 +11,7 @@
 <span id="progressbar-fallback">0</span>%
 </progress>
 <script src="gl-matrix.js"></script>
-<script src="../../gltoolbox.js/glt.js"></script> 
+<script src="../gltoolbox.js/glt.js"></script> 
 <script>
 (function() { 
 "use strict"; 
@@ -24,7 +19,7 @@
 var gl = GLT.createContext(document.getElementsByTagName("canvas")[0]); 
 var program = null; 
 var texture = null; 
-var modelname = "ak47bake.obj"; 
+var modelname = "monkey.obj"; 
 var texturename = "ak47bakedtexture.png";
 
 var projection = mat4.perspective(75, 4/3, 0.1, 1000); 
@@ -143,10 +138,8 @@ function draw(time) {
 
 	modelview = mat4.identity(); 
 	mat4.multiply(modelview, camera); 
-	//mat4.translate(modelview, [0, 0, -3]); 
 	mat4.rotateX(modelview, Date.now() / 1000);
 	mat4.rotateZ(modelview, Date.now() / 1500);
-	//mat4.scale(modelview, [0.05, 0.05, 0.05]); 
 
 	gl.bindTexture(gl.TEXTURE_2D, texture); 
 	gl.uniform1i(indxTexture, 0); 
@@ -160,14 +153,9 @@ function draw(time) {
 }
 }()); 
 </script> 
-
-<!--[if IE]>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="https://raw.github.com/smore-inc/clippy.js/master/build/clippy.min.js"></script>
-<script type="text/javascript" src="showclippy.js"></script>
-<![endif]-->
-
 </body>
 </html>
 
 
+<!doctype html>
+<html class="no-js" lang="en">

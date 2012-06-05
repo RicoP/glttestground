@@ -8,8 +8,8 @@ varying vec4 vNormal;
 uniform sampler2D uTexture; 
  
 void main(void) {
-	vec3 n = normalize(vNormal.xyz);  
+	vec3 c = texture2D(uTexture, vTextureuv).xyz; 
 
-	gl_FragColor = vec4(n.x, n.y, n.z, 1.0); 
+	gl_FragColor = vec4(c, 1.0); 
 }
 
