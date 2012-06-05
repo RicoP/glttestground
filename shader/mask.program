@@ -5,10 +5,27 @@ precision highp float;
 varying vec2 vTextureuv; 
 varying vec4 vNormal; 
 
+uniform mat4 uModelview;
+uniform mat4 uProjection; 
 uniform sampler2D uTexture; 
 uniform sampler2D uMask; 
 uniform sampler2D uTile; 
- 
+
+#ifdef VERTEX
+attribute vec4 aVertex;   
+attribute vec2 aTextureuv;   
+attribute vec4 aNormal;
+
+void main(void) {
+	vTextureuv = aTextureuv; 
+	vNormal = uProjection * uModelview * aNormal;
+	gl_Position = uProjection * uModelview * aVertex; 
+}
+#endif 
+
+
+
+#ifdef FRAGMENT 
 void main(void) {
 	float mask = texture2D(uMask, vTextureuv).x; 
 	
@@ -22,4 +39,4 @@ void main(void) {
 		gl_FragColor = vec4(c, 1.0); 
 	}
 }
-
+#endif

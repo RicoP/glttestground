@@ -31,6 +31,7 @@ var modelname = "flat.obj";
 var texturename = "flattexture.png";
 var maskname = "flatmark.png"; 
 var tilename = "cloud.jpg"; 
+var shadername = "mask.program"; 
 
 var projection = mat4.perspective(75, 4/3, 0.1, 1000); 
 var modelview = mat4.identity(); 
@@ -47,8 +48,7 @@ GLT.loadmanager.loadFiles({
 		texturename, 
 		maskname, 
 		tilename, 
-		"shader.vs", 
-		"shader.fs"
+		shadername
 	], 
 	"update" : (function() {
 		var bar = document.getElementById("progressbar"); 
@@ -73,25 +73,11 @@ function setup(files) {
 
 	gl.enable( gl.DEPTH_TEST ); 
 	gl.enable( gl.CULL_FACE ); 
-	
-	var vertexShader = gl.createShader(gl.VERTEX_SHADER); 
-	gl.shaderSource(vertexShader, files["shader.vs"]);
-	gl.compileShader(vertexShader); 
-	console.log( gl.getShaderInfoLog(vertexShader) ); 
 
-	var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER); 
-	gl.shaderSource(fragmentShader, files["shader.fs"]);
-	gl.compileShader(fragmentShader); 
-	console.log( gl.getShaderInfoLog(fragmentShader) ); 
+	var programsource = files[shadername]; 
 
-	program = gl.createProgram(); 
-
-	gl.attachShader(program, vertexShader); 
-	gl.attachShader(program, fragmentShader); 
-	gl.linkProgram(program); 
-
-	console.log( gl.getProgramInfoLog(program) ); 
-
+	program = GLT.SHADER.compileProgram( gl, programsource ); 
+		
 	var vtnBuffer = gl.createBuffer(); 
 	gl.bindBuffer(gl.ARRAY_BUFFER, vtnBuffer); 
 	gl.bufferData(gl.ARRAY_BUFFER, entity.rawData, gl.STATIC_DRAW); 
