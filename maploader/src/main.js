@@ -4,6 +4,7 @@
 //= lib/gl-matrix.js
 
 (function() {
+var gl = GLT.createContext(document.getElementsByTagName("canvas")[0]); 
 
 if(DEBUG) {
 	console.log("DEBUG Version"); 
@@ -13,6 +14,7 @@ if(DEBUG) {
 
 GAME.LEVELMANAGER.loadlevel(
 	"map1", 
+	gl, 
 	function(file, p) {
 		console.log(file, p); 
 	}, 

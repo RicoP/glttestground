@@ -5,7 +5,8 @@
 		{ "file" : "models/wall.obj",         "tag" : "wallobj" },
 		{ "file" : "models/walltex.png",      "tag" : "walltex" },
 		{ "file" : "models/groundtex.png",    "tag" : "groundtex" },
-		{ "file" : "shaders/diffuse.program", "tag" : "diffuse" }
+		//HACK: remove type please. 
+		{ "file" : "shaders/diffuse.program", "tag" : "diffuse", "type" : "shader" }
 	],
 
 	"width" : 8, 

@@ -1863,7 +1863,7 @@ if(!GAME_LEVELMANAGER_JS) {
 
 GAME.LEVELMANAGER = {}; 
 
-GAME.LEVELMANAGER.loadlevel = function(name, callbackprogress, callbackfinished) {
+GAME.LEVELMANAGER.loadlevel = function(name, gl, callbackprogress, callbackfinished) {
 	var mappath = "maps/" + name + ".json"; 
 
 	GLT.loadmanager.loadFiles({
@@ -1873,14 +1873,58 @@ GAME.LEVELMANAGER.loadlevel = function(name, callbackprogress, callbackfinished)
 		}, 
 		"finished" : function(files) {
 			var mapdata = files[mappath]; 
-			console.log(mapdata); 
+			processLevel(mapdata, callbackprogress, callbackfinished);  
 		}
 	}); 
+
+	function processLevel(map, onupdate, onfinished) {
+		GLT.loadmanager.loadFiles({
+			"files" : map.data, 
+			"update" : onupdate, 
+			"error" : function (file, m) {
+				console.error(file, m); 
+			}, 
+			"finished" : function(data) {
+				console.log("loaded"); 
+				var dict = mapTagToKey(data, gl); 
+				var models = [];
+				for(var i = 0; i != map.objects.models.length; i++) {
+					var model = map.objects.models[i]; 
+
+					
+				}
+			}
+		});
+	}
+
+	function mapTagToKey(data, gl) {
+		var dict = {};
+		var d; 
+		for(var k in data) {
+			d = data[k]; 
+			if(d.tag) {
+				if(d.type === "shader") { 
+					dict[d.tag] = GLT.SHADER.compileProgram(gl, d.data); 
+				}
+				else { 
+					dict[d.tag] = d.data;
+				}
+			}
+		}
+		return dict; 
+	}
 }
 
 }()); 
 }
 var GAME_LEVELMANAGER_JS = true; 
+
+
+
+
+
+
+
 
 
 if(!GAME_JS) {
@@ -5376,11 +5420,25 @@ var GL_MATRIX_JS = true;
 
 
 
-
-
 (function() {
+var gl = GLT.createContext(document.getElementsByTagName("canvas")[0]); 
 
-GAME.LEVELMANAGER.loadlevel("map1", null, null); 
+if(DEBUG) {
+	console.log("DEBUG Version"); 
+} else {
+	console.log("RELEASE Version"); 
+}
+
+GAME.LEVELMANAGER.loadlevel(
+	"map1", 
+	gl, 
+	function(file, p) {
+		console.log(file, p); 
+	}, 
+	function(files) {
+		console.log("done", files); 
+	}
+); 
 
 }());
 
