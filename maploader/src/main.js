@@ -1,11 +1,12 @@
-(function() {
-"use strict"; 
-
 //= game.js 
 //= game.levelmanager.js
 //= game.pathhelper.js
+//= lib/gl-matrix.js
 
 
-console.log("Hello world"); 
+
+(function() {
+
+GAME.LEVELMANAGER.loadlevel("map1", null, null); 
 
 }());
