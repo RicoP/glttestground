@@ -3,10 +3,22 @@
 //= game.pathhelper.js
 //= lib/gl-matrix.js
 
-
-
 (function() {
 
-GAME.LEVELMANAGER.loadlevel("map1", null, null); 
+if(DEBUG) {
+	console.log("DEBUG Version"); 
+} else {
+	console.log("RELEASE Version"); 
+}
+
+GAME.LEVELMANAGER.loadlevel(
+	"map1", 
+	function(file, p) {
+		console.log(file, p); 
+	}, 
+	function(files) {
+		console.log("done", files); 
+	}
+); 
 
 }());
